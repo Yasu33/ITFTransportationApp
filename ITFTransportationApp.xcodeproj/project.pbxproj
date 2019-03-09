@@ -20,6 +20,7 @@
 		E180121F22323EEF00AA8A58 /* getoff.png in Resources */ = {isa = PBXBuildFile; fileRef = E180121D22323EEE00AA8A58 /* getoff.png */; };
 		E18012232232445100AA8A58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E18012222232445100AA8A58 /* GoogleService-Info.plist */; };
 		E1801227223246D700AA8A58 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = E1801226223246D700AA8A58 /* bus.png */; };
+		E1801229223265C100AA8A58 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1801228223265C100AA8A58 /* CustomAnnotation.swift */; };
 		F0C85E51EF3940AD50152471 /* Pods_ITFTransportationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C30C2957879EBF2B36C3BF8 /* Pods_ITFTransportationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		E180121D22323EEE00AA8A58 /* getoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = getoff.png; sourceTree = "<group>"; };
 		E18012222232445100AA8A58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1801226223246D700AA8A58 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
+		E1801228223265C100AA8A58 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				E18011F32232149B00AA8A58 /* Assets.xcassets */,
 				E18011F52232149B00AA8A58 /* LaunchScreen.storyboard */,
 				E18011F82232149B00AA8A58 /* Info.plist */,
+				E1801228223265C100AA8A58 /* CustomAnnotation.swift */,
 			);
 			path = ITFTransportationApp;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			files = (
 				E18011EF2232149900AA8A58 /* ViewController.swift in Sources */,
 				E18011ED2232149900AA8A58 /* AppDelegate.swift in Sources */,
+				E1801229223265C100AA8A58 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

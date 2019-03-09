@@ -114,31 +114,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 return
             }
             
-            // realtimeBusLocaionsの中身を全消去
-            self.realtimeBusLocations.removeAll()
-            // 一度map上のピンを全消去
-            self.myMapView.removeAnnotations(self.annotation)
-            // annotationの中身を全消去
-            self.annotation.removeAll()
-            // 現在データベースに送られている位置情報を配列に入れる
-            for document in value.documents {
-                //                    print("\(document.documentID) => \(document.data())")
-                self.realtimeBusLocations.append([document.data()["latitude"] as! Double, document.data()["longitude"] as! Double])
-                self.annotation.append(MKPointAnnotation())
-            }
-            
-            //                print(self.realtimeBusLocations)
-            if self.realtimeBusLocations.count > 0 {
-                for i in 0...(self.realtimeBusLocations.count - 1) {
-                    //database中に記録されている位置にピンを立てる
-                    self.annotation[i].coordinate = CLLocationCoordinate2DMake(self.realtimeBusLocations[i][0], self.realtimeBusLocations[i][1])
-                    self.myMapView.addAnnotation(self.annotation[i])
-                }
-            }
-            
-            
             // バスの位置を表示
-//            self.pointLocations()
+            self.pointLocations()
             
         }
     }
@@ -180,9 +157,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = manager.location {
             
-            //            print("緯度：\(location.coordinate.latitude)")
-            //            print("経度：\(location.coordinate.longitude)")
-            //            print(location.coordinate)
+//            print("緯度：\(location.coordinate.latitude)")
+//            print("経度：\(location.coordinate.longitude)")
+//            print(location.coordinate)
             
             // 最新の位置情報
             guard let newLocation = locations.last,
@@ -192,7 +169,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             // 移動距離
             distance = newLocation.distance(from: formerLocation)
-            //            print("distance:\(String(distance))")
+//            print("distance:\(String(distance))")
             
             // 前の書き込み位置から20m進んだらFirebaseに最新の位置を書き込み
             if distance > 0 {
@@ -210,7 +187,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                         if let err = err {
                             print("Error adding document: \(err)")
                         } else {
-                            //                            print("Document added with ID: \(self.ref!.documentID)")
+//                            print("Document added with ID: \(self.ref!.documentID)")
                         }
                     }
                     userDocumentID = self.ref!.documentID
@@ -239,6 +216,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if annotationView == nil {
                 annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: identifier)
             }
+            
             annotationView?.image = UIImage.init(named: "bus.png") // 任意の画像名
             annotationView?.annotation = annotation
             annotationView?.canShowCallout = true  // タップで吹き出しを表示
@@ -274,12 +252,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 self.annotation.removeAll()
                 // 現在データベースに送られている位置情報を配列に入れる
                 for document in querySnapshot!.documents {
-                    //                    print("\(document.documentID) => \(document.data())")
+//                    print("\(document.documentID) => \(document.data())")
                     self.realtimeBusLocations.append([document.data()["latitude"] as! Double, document.data()["longitude"] as! Double])
                     self.annotation.append(MKPointAnnotation())
                 }
                 
-                //                print(self.realtimeBusLocations)
+//                print(self.realtimeBusLocations)
                 if self.realtimeBusLocations.count > 0 {
                     for i in 0...(self.realtimeBusLocations.count - 1) {
                         //database中に記録されている位置にピンを立てる
