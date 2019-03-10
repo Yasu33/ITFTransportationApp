@@ -6,4 +6,9 @@
 //  Copyright © 2019年 Yasuko Namikawa. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import MapKit
+
+class CustomAnnotation: MKAnnotationView{
+    var busName: String?
+}

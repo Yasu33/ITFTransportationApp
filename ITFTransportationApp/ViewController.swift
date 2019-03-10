@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIApplicationDelegate {
     
     // 地図
     @IBOutlet var myMapView: MKMapView!
@@ -31,7 +31,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // バスの種類
     let busRoute: [String] = [
-        "大学循環右回り", "大学循環左回り", "大学中央行", "土浦駅行", "ひたち野うしく駅行"
+        "大学循環右回り", "大学循環左回り", "大学中央行", "土浦駅西口行", "ひたち野うしく駅行", "荒川沖駅西口行"
     ]
     
     // 選択されたバス
@@ -118,6 +118,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.pointLocations()
             
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillTerminate(_:)), name: UIApplication.willTerminateNotification, object: nil)
+    }
+    
+    // アプリが終了した時
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("finish!!")
+        button.setBackgroundImage(UIImage(named: "ride.png"), for: .normal)
+        //位置情報の更新やめる
+        if userDocumentID != nil {
+            myLocationManager.stopUpdatingLocation()
+            db.collection("Bus").document(userDocumentID).delete()
+            userDocumentID = nil
+        }
+        ridingSwitch = false
     }
     
     //メッセージ出力メソッド
