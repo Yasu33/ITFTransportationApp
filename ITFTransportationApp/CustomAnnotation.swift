@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
-class CustomAnnotation: MKAnnotationView{
-    var busName: String?
+class CustomAnnotation: MKPointAnnotation{
+    var busName: String!
+    var pinImage: String!
 }

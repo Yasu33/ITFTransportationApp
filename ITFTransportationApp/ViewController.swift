@@ -34,6 +34,48 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         "大学循環右回り", "大学循環左回り", "大学中央行", "土浦駅西口行", "ひたち野うしく駅行", "荒川沖駅西口行"
     ]
     
+    // バス停の位置にピンを置くための配列
+    var busStopAnnotation =  [CustomAnnotation()]
+
+    // バス停の緯度と経度
+    var busStationLocations: [[Double]] = [
+        [36.082332, 140.112653], // センター
+        [36.085212, 140.109008], // 吾妻小
+        [36.087545, 140.107476], // 春日エリア
+        [36.090498, 140.105427], // メディカルセンター前
+        [36.093089, 140.103861], // 大学病院
+        [36.095479, 140.102852], // 追越
+        [36.097552, 140.102181], // 平砂
+        [36.103478, 140.101470], // 体芸
+        [36.104750, 140.101211], // 大学会館
+        [36.107912, 140.099867], // 第一エリア
+        [36.110151, 140.098573], // 第三エリア
+        [36.114039, 140.097107], // 虹の広場
+        [36.118506, 140.096100], // 農林技術センター
+        [36.119423, 140.099079], // 一の矢
+        [36.116028, 140.102068], // 植物見本園
+        [36.112966, 140.102378], // TARAセンター
+        [36.111305, 140.103565], // 大学中央
+        [36.109810, 140.104011], // 大学公園
+        [36.108065, 140.104286], // 松美池
+        [36.106376, 140.105643], // 天三
+        [36.103708, 140.106702], // 合宿所
+        [36.100709, 140.106090], // 天久保池
+        [36.097366, 140.106070], // 天二
+        [36.094633, 140.106710], // 追越宿舎東
+        [36.092366, 140.105752], // メディカルセンター病院
+        [36.113515, 140.100857]  // 第二エリア
+    ]
+    
+    // バス停の名前
+    var busStationNames: [String] = [
+        "つくばセンター", "吾妻小学校", "筑波大学春日エリア前", "筑波メディカルセンター前",
+        "筑波大学病院", "追越学生宿舎前", "平砂学生宿舎前", "筑波大学西", "大学会館前",
+        "第一エリア前", "第三エリア前", "虹の広場", "農林技術センター", "一ノ矢学生宿舎前",
+        "大学植物見本園", "TARAセンター前", "筑波大学中央", "大学公園", "松美池", "天久保三丁目",
+        "合宿所", "天久保池", "天久保二丁目", "追越宿舎東", "メディカルセンター病院", "第二エリア前"
+    ]
+    
     // 選択されたバス
     var selectedBus: String!
     
@@ -44,7 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var userDocumentID: String!
     
     // 通信中のバスの位置のピン
-    var annotation = [MKPointAnnotation]()
+    var busAnnotation: [CustomAnnotation] = []
     
     // 現在通信中のバスの位置
     var realtimeBusLocations = [[Double]]()
@@ -67,12 +109,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         pickerView.dataSource = self
         
         // 地図の表示範囲を設定
-        let initialCoordinate = CLLocationCoordinate2DMake(36.101, 140.1033)
-        let span = MKCoordinateSpan.init(latitudeDelta: 0.038, longitudeDelta: 0.029)
+        let initialCoordinate = CLLocationCoordinate2DMake(36.102, 140.1033)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.045, longitudeDelta: 0.034)
         let region = MKCoordinateRegion(center: initialCoordinate, span: span)
         
         // 地図の表示
         myMapView.setRegion(region, animated: true)
+        
+        // バス停の位置にピンを表示
+        for i in 0...25 {
+            busStopAnnotation.append(CustomAnnotation())
+            busStopAnnotation[i].coordinate = CLLocationCoordinate2DMake(busStationLocations[i][0], busStationLocations[i][1])
+            busStopAnnotation[i].title = busStationNames[i]
+            busStopAnnotation[i].pinImage = "BusStop16px.png"
+        }
+        myMapView.addAnnotations(busStopAnnotation)
         
         // 位置情報がオンになっているか
         print(CLLocationManager.locationServicesEnabled())
@@ -124,7 +175,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // アプリが終了した時
     func applicationWillTerminate(_ application: UIApplication) {
-        print("finish!!")
         button.setBackgroundImage(UIImage(named: "ride.png"), for: .normal)
         //位置情報の更新やめる
         if userDocumentID != nil {
@@ -226,16 +276,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return nil
         } else {
             // CustomAnnotationの場合に画像を配置
-            let identifier = "Pin"
-            var annotationView: MKAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            if annotationView == nil {
-                annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: identifier)
-            }
+//            let identifier = "Pin"
+//            var annotationView: MKAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//            if annotationView == nil {
+//                annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: identifier)
+//            }
+//
+//            annotationView?.image = UIImage.init(named: "bus.png") // 任意の画像名
+//            annotationView?.annotation = annotation
+//            annotationView?.canShowCallout = true  // タップで吹き出しを表示
+//            return annotationView
             
-            annotationView?.image = UIImage.init(named: "bus.png") // 任意の画像名
-            annotationView?.annotation = annotation
-            annotationView?.canShowCallout = true  // タップで吹き出しを表示
-            return annotationView
+            if let newAnnotation = annotation as? CustomAnnotation {
+                let pinView = MKAnnotationView()
+                pinView.annotation = annotation
+                pinView.image = UIImage(named: newAnnotation.pinImage)
+                pinView.canShowCallout = true
+                return pinView
+            }else{
+                print("annotation error")
+                return nil
+            }
         }
     }
     
@@ -262,23 +323,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 // realtimeBusLocaionsの中身を全消去
                 self.realtimeBusLocations.removeAll()
                 // 一度map上のピンを全消去
-                self.myMapView.removeAnnotations(self.annotation)
+                self.myMapView.removeAnnotations(self.busAnnotation)
                 // annotationの中身を全消去
-                self.annotation.removeAll()
+                self.busAnnotation.removeAll()
                 // 現在データベースに送られている位置情報を配列に入れる
                 for document in querySnapshot!.documents {
 //                    print("\(document.documentID) => \(document.data())")
                     self.realtimeBusLocations.append([document.data()["latitude"] as! Double, document.data()["longitude"] as! Double])
-                    self.annotation.append(MKPointAnnotation())
+                    self.busAnnotation.append(CustomAnnotation())
                 }
                 
 //                print(self.realtimeBusLocations)
                 if self.realtimeBusLocations.count > 0 {
                     for i in 0...(self.realtimeBusLocations.count - 1) {
                         //database中に記録されている位置にピンを立てる
-                        self.annotation[i].coordinate = CLLocationCoordinate2DMake(self.realtimeBusLocations[i][0], self.realtimeBusLocations[i][1])
-                        self.myMapView.addAnnotation(self.annotation[i])
+                        self.busAnnotation[i].pinImage = "\(describing: querySnapshot!.documents[i].data()["Bus"]!).png"
+//                        self.busAnnotation[i].pinImage = "大学循環右回り.png"
+                        self.busAnnotation[i].coordinate = CLLocationCoordinate2DMake(self.realtimeBusLocations[i][0], self.realtimeBusLocations[i][1])
                     }
+                    self.myMapView.addAnnotations(self.busAnnotation)
                 }
                 
             }
