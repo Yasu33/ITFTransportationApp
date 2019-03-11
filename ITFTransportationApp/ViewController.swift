@@ -128,6 +128,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // 位置情報がオンになっているか
         print(CLLocationManager.locationServicesEnabled())
         
+        // バックグラウンドでの位置情報取得
         myLocationManager.allowsBackgroundLocationUpdates = true
         myLocationManager.requestAlwaysAuthorization()
         
@@ -275,18 +276,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             // ユーザの現在地の青丸マークは置き換えない
             return nil
         } else {
-            // CustomAnnotationの場合に画像を配置
-//            let identifier = "Pin"
-//            var annotationView: MKAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-//            if annotationView == nil {
-//                annotationView = MKAnnotationView.init(annotation: annotation, reuseIdentifier: identifier)
-//            }
-//
-//            annotationView?.image = UIImage.init(named: "bus.png") // 任意の画像名
-//            annotationView?.annotation = annotation
-//            annotationView?.canShowCallout = true  // タップで吹き出しを表示
-//            return annotationView
-            
+            // CustomAnnotationに設定された画像に合わせてピンの画像をセット
             if let newAnnotation = annotation as? CustomAnnotation {
                 let pinView = MKAnnotationView()
                 pinView.annotation = annotation
@@ -338,7 +328,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     for i in 0...(self.realtimeBusLocations.count - 1) {
                         //database中に記録されている位置にピンを立てる
                         self.busAnnotation[i].pinImage = "\(describing: querySnapshot!.documents[i].data()["Bus"]!).png"
-//                        self.busAnnotation[i].pinImage = "大学循環右回り.png"
                         self.busAnnotation[i].coordinate = CLLocationCoordinate2DMake(self.realtimeBusLocations[i][0], self.realtimeBusLocations[i][1])
                     }
                     self.myMapView.addAnnotations(self.busAnnotation)

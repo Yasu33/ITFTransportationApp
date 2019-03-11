@@ -9,14 +9,17 @@
 /* Begin PBXBuildFile section */
 		04A7092AC066513B1818FE74 /* Pods_ITFTransportationAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1D70112AA97C872C7BE866 /* Pods_ITFTransportationAppUITests.framework */; };
 		CE87273B68D2619EAC3B918B /* Pods_ITFTransportationAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734915D22A31F2288C31295A /* Pods_ITFTransportationAppTests.framework */; };
-		E13A09C52236AB9A00E12ECA /* BusStop16px.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09C42236AB9900E12ECA /* BusStop16px.png */; };
-		E13A09C72236ABE900E12ECA /* BusStop32px.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09C62236ABE900E12ECA /* BusStop32px.png */; };
-		E13A09CD2236CCF400E12ECA /* 大学循環右回り.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09CC2236CCF400E12ECA /* 大学循環右回り.png */; };
-		E13A09CF2236CDCF00E12ECA /* 大学循環左回り.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09CE2236CDCF00E12ECA /* 大学循環左回り.png */; };
-		E13A09D12236CE5B00E12ECA /* 大学中央行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09D02236CE5B00E12ECA /* 大学中央行.png */; };
-		E13A09D32236CED300E12ECA /* 土浦駅西口行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09D22236CED300E12ECA /* 土浦駅西口行.png */; };
-		E13A09D52236D00B00E12ECA /* ひたち野うしく駅行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09D42236D00B00E12ECA /* ひたち野うしく駅行.png */; };
-		E13A09D72236D08F00E12ECA /* 荒川沖駅西口行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09D62236D08F00E12ECA /* 荒川沖駅西口行.png */; };
+		E13A09E42236DFFD00E12ECA /* 大学循環左回り.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09D92236DFFD00E12ECA /* 大学循環左回り.png */; };
+		E13A09E52236DFFD00E12ECA /* 荒川沖駅西口行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09DA2236DFFD00E12ECA /* 荒川沖駅西口行.png */; };
+		E13A09E62236DFFD00E12ECA /* ひたち野うしく駅行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09DB2236DFFD00E12ECA /* ひたち野うしく駅行.png */; };
+		E13A09E72236DFFD00E12ECA /* 大学中央行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09DC2236DFFD00E12ECA /* 大学中央行.png */; };
+		E13A09E82236DFFD00E12ECA /* getoff.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09DD2236DFFD00E12ECA /* getoff.png */; };
+		E13A09E92236DFFD00E12ECA /* BusStop16px.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09DE2236DFFD00E12ECA /* BusStop16px.png */; };
+		E13A09EA2236DFFD00E12ECA /* BusStop32px.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09DF2236DFFD00E12ECA /* BusStop32px.png */; };
+		E13A09EB2236DFFD00E12ECA /* ride.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09E02236DFFD00E12ECA /* ride.png */; };
+		E13A09EC2236DFFD00E12ECA /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09E12236DFFD00E12ECA /* bus.png */; };
+		E13A09ED2236DFFD00E12ECA /* 土浦駅西口行.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09E22236DFFD00E12ECA /* 土浦駅西口行.png */; };
+		E13A09EE2236DFFD00E12ECA /* 大学循環右回り.png in Resources */ = {isa = PBXBuildFile; fileRef = E13A09E32236DFFD00E12ECA /* 大学循環右回り.png */; };
 		E18011ED2232149900AA8A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18011EC2232149900AA8A58 /* AppDelegate.swift */; };
 		E18011EF2232149900AA8A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18011EE2232149900AA8A58 /* ViewController.swift */; };
 		E18011F22232149900AA8A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18011F02232149900AA8A58 /* Main.storyboard */; };
@@ -24,10 +27,7 @@
 		E18011F72232149B00AA8A58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18011F52232149B00AA8A58 /* LaunchScreen.storyboard */; };
 		E18012022232149B00AA8A58 /* ITFTransportationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18012012232149B00AA8A58 /* ITFTransportationAppTests.swift */; };
 		E180120D2232149B00AA8A58 /* ITFTransportationAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180120C2232149B00AA8A58 /* ITFTransportationAppUITests.swift */; };
-		E180121E22323EEF00AA8A58 /* ride.png in Resources */ = {isa = PBXBuildFile; fileRef = E180121C22323EEE00AA8A58 /* ride.png */; };
-		E180121F22323EEF00AA8A58 /* getoff.png in Resources */ = {isa = PBXBuildFile; fileRef = E180121D22323EEE00AA8A58 /* getoff.png */; };
 		E18012232232445100AA8A58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E18012222232445100AA8A58 /* GoogleService-Info.plist */; };
-		E1801227223246D700AA8A58 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = E1801226223246D700AA8A58 /* bus.png */; };
 		E1801229223265C100AA8A58 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1801228223265C100AA8A58 /* CustomAnnotation.swift */; };
 		F0C85E51EF3940AD50152471 /* Pods_ITFTransportationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C30C2957879EBF2B36C3BF8 /* Pods_ITFTransportationApp.framework */; };
 /* End PBXBuildFile section */
@@ -59,14 +59,17 @@
 		9556FD7AD3AE26523089D062 /* Pods-ITFTransportationAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITFTransportationAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ITFTransportationAppUITests/Pods-ITFTransportationAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		97FF6E0A153E3D6E986E5D7A /* Pods-ITFTransportationAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITFTransportationAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-ITFTransportationAppUITests/Pods-ITFTransportationAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D1D70112AA97C872C7BE866 /* Pods_ITFTransportationAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITFTransportationAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E13A09C42236AB9900E12ECA /* BusStop16px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BusStop16px.png; sourceTree = "<group>"; };
-		E13A09C62236ABE900E12ECA /* BusStop32px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BusStop32px.png; sourceTree = "<group>"; };
-		E13A09CC2236CCF400E12ECA /* 大学循環右回り.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大学循環右回り.png"; sourceTree = "<group>"; };
-		E13A09CE2236CDCF00E12ECA /* 大学循環左回り.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大学循環左回り.png"; sourceTree = "<group>"; };
-		E13A09D02236CE5B00E12ECA /* 大学中央行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大学中央行.png"; sourceTree = "<group>"; };
-		E13A09D22236CED300E12ECA /* 土浦駅西口行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "土浦駅西口行.png"; sourceTree = "<group>"; };
-		E13A09D42236D00B00E12ECA /* ひたち野うしく駅行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ひたち野うしく駅行.png"; sourceTree = "<group>"; };
-		E13A09D62236D08F00E12ECA /* 荒川沖駅西口行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "荒川沖駅西口行.png"; sourceTree = "<group>"; };
+		E13A09D92236DFFD00E12ECA /* 大学循環左回り.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大学循環左回り.png"; sourceTree = "<group>"; };
+		E13A09DA2236DFFD00E12ECA /* 荒川沖駅西口行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "荒川沖駅西口行.png"; sourceTree = "<group>"; };
+		E13A09DB2236DFFD00E12ECA /* ひたち野うしく駅行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ひたち野うしく駅行.png"; sourceTree = "<group>"; };
+		E13A09DC2236DFFD00E12ECA /* 大学中央行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大学中央行.png"; sourceTree = "<group>"; };
+		E13A09DD2236DFFD00E12ECA /* getoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = getoff.png; sourceTree = "<group>"; };
+		E13A09DE2236DFFD00E12ECA /* BusStop16px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BusStop16px.png; sourceTree = "<group>"; };
+		E13A09DF2236DFFD00E12ECA /* BusStop32px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BusStop32px.png; sourceTree = "<group>"; };
+		E13A09E02236DFFD00E12ECA /* ride.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ride.png; sourceTree = "<group>"; };
+		E13A09E12236DFFD00E12ECA /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
+		E13A09E22236DFFD00E12ECA /* 土浦駅西口行.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "土浦駅西口行.png"; sourceTree = "<group>"; };
+		E13A09E32236DFFD00E12ECA /* 大学循環右回り.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大学循環右回り.png"; sourceTree = "<group>"; };
 		E18011E92232149900AA8A58 /* ITFTransportationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITFTransportationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18011EC2232149900AA8A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E18011EE2232149900AA8A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,10 +83,7 @@
 		E18012082232149B00AA8A58 /* ITFTransportationAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITFTransportationAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180120C2232149B00AA8A58 /* ITFTransportationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITFTransportationAppUITests.swift; sourceTree = "<group>"; };
 		E180120E2232149B00AA8A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E180121C22323EEE00AA8A58 /* ride.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ride.png; sourceTree = "<group>"; };
-		E180121D22323EEE00AA8A58 /* getoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = getoff.png; sourceTree = "<group>"; };
 		E18012222232445100AA8A58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E1801226223246D700AA8A58 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
 		E1801228223265C100AA8A58 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +138,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E13A09D82236DFFD00E12ECA /* image */ = {
+			isa = PBXGroup;
+			children = (
+				E13A09D92236DFFD00E12ECA /* 大学循環左回り.png */,
+				E13A09DA2236DFFD00E12ECA /* 荒川沖駅西口行.png */,
+				E13A09DB2236DFFD00E12ECA /* ひたち野うしく駅行.png */,
+				E13A09DC2236DFFD00E12ECA /* 大学中央行.png */,
+				E13A09DD2236DFFD00E12ECA /* getoff.png */,
+				E13A09DE2236DFFD00E12ECA /* BusStop16px.png */,
+				E13A09DF2236DFFD00E12ECA /* BusStop32px.png */,
+				E13A09E02236DFFD00E12ECA /* ride.png */,
+				E13A09E12236DFFD00E12ECA /* bus.png */,
+				E13A09E22236DFFD00E12ECA /* 土浦駅西口行.png */,
+				E13A09E32236DFFD00E12ECA /* 大学循環右回り.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		E18011E02232149900AA8A58 = {
 			isa = PBXGroup;
 			children = (
@@ -163,18 +181,8 @@
 		E18011EB2232149900AA8A58 /* ITFTransportationApp */ = {
 			isa = PBXGroup;
 			children = (
-				E13A09D62236D08F00E12ECA /* 荒川沖駅西口行.png */,
-				E13A09D42236D00B00E12ECA /* ひたち野うしく駅行.png */,
-				E13A09D22236CED300E12ECA /* 土浦駅西口行.png */,
-				E13A09D02236CE5B00E12ECA /* 大学中央行.png */,
-				E13A09CE2236CDCF00E12ECA /* 大学循環左回り.png */,
-				E13A09CC2236CCF400E12ECA /* 大学循環右回り.png */,
-				E13A09C62236ABE900E12ECA /* BusStop32px.png */,
-				E13A09C42236AB9900E12ECA /* BusStop16px.png */,
-				E1801226223246D700AA8A58 /* bus.png */,
+				E13A09D82236DFFD00E12ECA /* image */,
 				E18012222232445100AA8A58 /* GoogleService-Info.plist */,
-				E180121D22323EEE00AA8A58 /* getoff.png */,
-				E180121C22323EEE00AA8A58 /* ride.png */,
 				E18011EC2232149900AA8A58 /* AppDelegate.swift */,
 				E18011EE2232149900AA8A58 /* ViewController.swift */,
 				E18011F02232149900AA8A58 /* Main.storyboard */,
@@ -317,21 +325,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13A09D12236CE5B00E12ECA /* 大学中央行.png in Resources */,
-				E13A09D32236CED300E12ECA /* 土浦駅西口行.png in Resources */,
+				E13A09E72236DFFD00E12ECA /* 大学中央行.png in Resources */,
+				E13A09ED2236DFFD00E12ECA /* 土浦駅西口行.png in Resources */,
 				E18011F72232149B00AA8A58 /* LaunchScreen.storyboard in Resources */,
-				E13A09CF2236CDCF00E12ECA /* 大学循環左回り.png in Resources */,
-				E13A09C52236AB9A00E12ECA /* BusStop16px.png in Resources */,
-				E13A09D52236D00B00E12ECA /* ひたち野うしく駅行.png in Resources */,
-				E13A09CD2236CCF400E12ECA /* 大学循環右回り.png in Resources */,
-				E13A09D72236D08F00E12ECA /* 荒川沖駅西口行.png in Resources */,
-				E1801227223246D700AA8A58 /* bus.png in Resources */,
-				E13A09C72236ABE900E12ECA /* BusStop32px.png in Resources */,
+				E13A09EC2236DFFD00E12ECA /* bus.png in Resources */,
 				E18011F42232149B00AA8A58 /* Assets.xcassets in Resources */,
-				E180121F22323EEF00AA8A58 /* getoff.png in Resources */,
 				E18011F22232149900AA8A58 /* Main.storyboard in Resources */,
 				E18012232232445100AA8A58 /* GoogleService-Info.plist in Resources */,
-				E180121E22323EEF00AA8A58 /* ride.png in Resources */,
+				E13A09E82236DFFD00E12ECA /* getoff.png in Resources */,
+				E13A09E52236DFFD00E12ECA /* 荒川沖駅西口行.png in Resources */,
+				E13A09E62236DFFD00E12ECA /* ひたち野うしく駅行.png in Resources */,
+				E13A09E42236DFFD00E12ECA /* 大学循環左回り.png in Resources */,
+				E13A09EA2236DFFD00E12ECA /* BusStop32px.png in Resources */,
+				E13A09EE2236DFFD00E12ECA /* 大学循環右回り.png in Resources */,
+				E13A09E92236DFFD00E12ECA /* BusStop16px.png in Resources */,
+				E13A09EB2236DFFD00E12ECA /* ride.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
