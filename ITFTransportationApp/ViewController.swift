@@ -178,12 +178,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func applicationWillTerminate(_ application: UIApplication) {
         //位置情報の更新やめる
         if userDocumentID != nil {
-            myLocationManager.stopUpdatingLocation()
             db.collection("Bus").document(userDocumentID).delete()
-            userDocumentID = nil
         }
-        button.setBackgroundImage(UIImage(named: "ride.png"), for: .normal)
-        ridingSwitch = false
     }
     
     //メッセージ出力メソッド
@@ -224,12 +220,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
                     //機能制限されている場合
                     case CLAuthorizationStatus.restricted:
-                        alertMessage(message: "位置情報サービスの利用が制限されているため利用できません。「設定」⇒「一般」⇒「機能制限」")
+                        alertMessage(message: "位置情報サービスの利用が制限されているため利用できません。")
                         myLocationManager.requestAlwaysAuthorization()
 
                     //「許可しない」に設定されている場合
                     case CLAuthorizationStatus.denied:
-                        alertMessage(message: "位置情報の利用が許可されていないため利用できません。「設定」⇒「プライバシー」⇒「位置情報サービス」⇒「バスどこ」")
+                        alertMessage(message: "位置情報の利用が許可されていないため利用できません。")
                         myLocationManager.requestAlwaysAuthorization()
 
                     // 「常に許可」か「使用中のみ許可」の場合
