@@ -143,7 +143,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 
             //機能制限されている場合
             case CLAuthorizationStatus.restricted:
-                alertMessage(message: "位置情報サービスの利用が制限されている利用できません。「設定」⇒「一般」⇒「機能制限」")
+                alertMessage(message: "位置情報サービスの利用が制限されているため利用できません。「設定」⇒「一般」⇒「機能制限」")
                 
             //「許可しない」に設定されている場合
             case CLAuthorizationStatus.denied:
@@ -207,15 +207,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             ridingSwitch = false
         }else{
-            button.setBackgroundImage(UIImage(named: "getoff.png"), for: .normal)
             if CLLocationManager.locationServicesEnabled() {
+                button.setBackgroundImage(UIImage(named: "getoff.png"), for: .normal)
+
                 // 位置情報更新し始める
                 myLocationManager.startUpdatingLocation()
                 // pickerviewで選択されたバス
                 selectedBus = busRoute[pickerView.selectedRow(inComponent: 0)]
-                print(selectedBus!)
+                ridingSwitch = true
+            }else{
+                // 現在の許可の状態で場合分け
+                switch CLLocationManager.authorizationStatus() {
+                    // 未設定の場合
+                    case CLAuthorizationStatus.notDetermined:
+                        myLocationManager.requestWhenInUseAuthorization()
+                    
+                    //機能制限されている場合
+                    case CLAuthorizationStatus.restricted:
+                        alertMessage(message: "位置情報サービスの利用が制限されているため利用できません。「設定」⇒「一般」⇒「機能制限」")
+                    
+                    //「許可しない」に設定されている場合
+                    case CLAuthorizationStatus.denied:
+                        alertMessage(message: "位置情報の利用が許可されていないため利用できません。「設定」⇒「プライバシー」⇒「位置情報サービス」⇒「バスどこ」")
+                    
+                    // 「常に許可」か「使用中のみ許可」の場合
+                    default:
+                        break
+                }
             }
-            ridingSwitch = true
         }
     }
     
