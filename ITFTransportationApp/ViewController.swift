@@ -70,7 +70,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // バス停の名前
     var busStationNames: [String] = [
         "つくばセンター", "吾妻小学校", "筑波大学春日エリア前", "筑波メディカルセンター前",
-        "筑波大学病院", "追越学生宿舎前", "平砂学生宿舎前", "筑波大学西", "大学会館前",
+        "筑波大学病院入口", "追越学生宿舎前", "平砂学生宿舎前", "筑波大学西", "大学会館前",
         "第一エリア前", "第三エリア前", "虹の広場", "農林技術センター", "一ノ矢学生宿舎前",
         "大学植物見本園", "TARAセンター前", "筑波大学中央", "大学公園", "松美池", "天久保三丁目",
         "合宿所", "天久保池", "天久保二丁目", "追越宿舎東", "メディカルセンター病院", "第二エリア前"
@@ -238,7 +238,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //            print("distance:\(String(distance))")
             
             // 前の書き込み位置から20m進んだらFirebaseに最新の位置を書き込み
-            if distance > 0 {
+            if distance > 20 {
                 
                 // Firebase
                 let data = [
