@@ -179,8 +179,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         self.checkFireBase()
-        // 30秒に一回FirebaseのDatabaseをチェックする
-        checkTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.checkFireBase), userInfo: nil, repeats: true)
+        // 10秒に一回FirebaseのDatabaseをチェックする
+        checkTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkFireBase), userInfo: nil, repeats: true)
         
         // アプリの終了を観察
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillTerminate(_:)), name: UIApplication.willTerminateNotification, object: nil)
@@ -253,7 +253,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //            print("distance:\(String(distance))")
             
             // 前の書き込み位置から10m進む、もしくは前回の更新から30秒たったらFirebaseに最新の位置を書き込み
-            if distance > 0 {
+            if distance > 10 {
                 
                 // Firebase
                 let data = [
