@@ -252,8 +252,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             distance = newLocation.distance(from: formerLocation)
 //            print("distance:\(String(distance))")
             
-            // 前の書き込み位置から10m進む、もしくは前回の更新から30秒たったらFirebaseに最新の位置を書き込み
-            if distance > 10 {
+            // 前の書き込み位置から15m進んだらFirebaseに書き込み
+            if distance > 15 {
                 
                 // Firebase
                 let data = [
@@ -342,7 +342,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if self.realtimeBusLocations.count > 0 {
                     for i in 0...(self.realtimeBusLocations.count - 1) {
                         //database中に記録されている位置にピンを立てる
-                        self.busAnnotation[i].pinImage = "\(describing: querySnapshot!.documents[i].data()["BusData"]!).png"
+                        self.busAnnotation[i].pinImage = "\(describing: querySnapshot!.documents[i].data()["Bus"]!).png"
                         self.busAnnotation[i].coordinate = CLLocationCoordinate2DMake(self.realtimeBusLocations[i][0], self.realtimeBusLocations[i][1])
                     }
                     self.myMapView.addAnnotations(self.busAnnotation)

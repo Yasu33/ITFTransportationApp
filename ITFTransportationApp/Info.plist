@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ITraFfic</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,10 +24,10 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>アプリの使用中に位置情報を使用するのを許可しますか？</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>常に位置情報を取得するのを許可しますか？</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>アプリの使用中に位置情報を使用するのを許可しますか？</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -42,8 +44,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
