@@ -167,7 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         // FirebaseのDatabaseに変更があった時の処理
-        db.collection("Bus").addSnapshotListener(includeMetadataChanges: true) {(snapShot, error) in
+        db.collection("BusData").addSnapshotListener(includeMetadataChanges: true) {(snapShot, error) in
             guard let value = snapShot else {
                 print("snapShot is nil")
                 return
@@ -195,7 +195,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //    func applicationWillTerminate(_ application: UIApplication) {
 //        //位置情報の更新やめる
 //        if userDocumentID != nil {
-//            db.collection("Bus").document(userDocumentID).delete()
+//            db.collection("BusData").document(userDocumentID).delete()
 //        }
 //    }
     
@@ -215,7 +215,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             //位置情報の更新やめる
             if userDocumentID != nil {
                 myLocationManager.stopUpdatingLocation()
-                db.collection("Bus").document(userDocumentID).delete()
+                db.collection("BusData").document(userDocumentID).delete()
                 userDocumentID = nil
             }
             ridingSwitch = false
@@ -264,7 +264,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     ] as [String : Any]
                 
                 if userDocumentID == nil {
-                    ref = db.collection("Bus").addDocument(data: data){ err in
+                    ref = db.collection("BusData").addDocument(data: data){ err in
                         if let err = err {
                             print("Error adding document: \(err)")
                         } else {
@@ -273,7 +273,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     }
                     userDocumentID = self.ref!.documentID
                 }else{
-                    db.collection("Bus").document(userDocumentID).updateData(data)
+                    db.collection("BusData").document(userDocumentID).updateData(data)
                 }
                 
                 // 最新の位置情報を一個前にずらす
@@ -321,7 +321,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // 通信して地図上にピンを置くメソッド
     func pointLocations() {
         
-        self.db.collection("Bus").getDocuments () { (querySnapshot, err) in
+        self.db.collection("BusData").getDocuments () { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -342,7 +342,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if self.realtimeBusLocations.count > 0 {
                     for i in 0...(self.realtimeBusLocations.count - 1) {
                         //database中に記録されている位置にピンを立てる
-                        self.busAnnotation[i].pinImage = "\(describing: querySnapshot!.documents[i].data()["Bus"]!).png"
+                        self.busAnnotation[i].pinImage = "\(describing: querySnapshot!.documents[i].data()["BusData"]!).png"
                         self.busAnnotation[i].coordinate = CLLocationCoordinate2DMake(self.realtimeBusLocations[i][0], self.realtimeBusLocations[i][1])
                     }
                     self.myMapView.addAnnotations(self.busAnnotation)
@@ -353,7 +353,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @objc func checkFireBase() {
-        self.db.collection("Bus").getDocuments () { (querySnapshot, err) in
+        self.db.collection("BusData").getDocuments () { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -368,7 +368,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //                    print(documentTimestamp.dateValue())
                         let span = now.timeIntervalSince(documentTimestamp.dateValue() as Date)
                         if span > 60 {
-                            self.db.collection("Bus").document(docID).delete()
+                            self.db.collection("BusData").document(docID).delete()
                         }
                     }
                     
@@ -382,7 +382,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //位置情報の更新やめる
         if userDocumentID != nil {
             myLocationManager.stopUpdatingLocation()
-            db.collection("Bus").document(userDocumentID).delete()
+            db.collection("BusData").document(userDocumentID).delete()
             userDocumentID = nil
         }
         ridingSwitch = false
