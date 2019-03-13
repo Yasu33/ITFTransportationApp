@@ -10,8 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 import Firebase
+import Reachability
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIApplicationDelegate {
+    
+    // Wifi確認
+    let reachability = Reachability()!
     
     // 地図
     @IBOutlet var myMapView: MKMapView!
@@ -101,9 +105,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 30秒に一回FirebaseのDatabaseをチェックする
-        checkTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.checkFireBase), userInfo: nil, repeats: true)
-        
         db = Firestore.firestore()
         
         myLocationManager = CLLocationManager()
@@ -177,16 +178,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillTerminate(_:)), name: UIApplication.willTerminateNotification, object: nil)
+        self.checkFireBase()
+        // 30秒に一回FirebaseのDatabaseをチェックする
+        checkTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.checkFireBase), userInfo: nil, repeats: true)
+        
+        // アプリの終了を観察
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillTerminate(_:)), name: UIApplication.willTerminateNotification, object: nil)
+        
+        // WiFi情報を確認
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        try? reachability.startNotifier()
+        
     }
     
-    // アプリが終了した時
-    func applicationWillTerminate(_ application: UIApplication) {
-        //位置情報の更新やめる
-        if userDocumentID != nil {
-            db.collection("Bus").document(userDocumentID).delete()
-        }
-    }
+//    // アプリが終了した時
+//    func applicationWillTerminate(_ application: UIApplication) {
+//        //位置情報の更新やめる
+//        if userDocumentID != nil {
+//            db.collection("Bus").document(userDocumentID).delete()
+//        }
+//    }
     
     //メッセージ出力メソッド
     func alertMessage(message:String) {
@@ -242,7 +253,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //            print("distance:\(String(distance))")
             
             // 前の書き込み位置から10m進む、もしくは前回の更新から30秒たったらFirebaseに最新の位置を書き込み
-            if distance > 10 {
+            if distance > 0 {
                 
                 // Firebase
                 let data = [
@@ -350,16 +361,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //                print(now)
                 for document in querySnapshot!.documents {
                     let docID = document.documentID
-                    let documentTimestamp = document.data()["createdAt"] as! Timestamp
+                    if document.data()["createdAt"] is NSNull {
+                        print("nullでした")
+                    }else{
+                        let documentTimestamp = document.data()["createdAt"] as! Timestamp
 //                    print(documentTimestamp.dateValue())
-                    let span = now.timeIntervalSince(documentTimestamp.dateValue() as Date)
-//                    print(span)
-                    if span > 60 {
-                        self.db.collection("Bus").document(docID).delete()
+                        let span = now.timeIntervalSince(documentTimestamp.dateValue() as Date)
+                        if span > 60 {
+                            self.db.collection("Bus").document(docID).delete()
+                        }
                     }
+                    
                 }
             }
         }
+    }
+    
+    @objc func reachabilityChanged() {
+        button.setBackgroundImage(UIImage(named: "ride.png"), for: .normal)
+        //位置情報の更新やめる
+        if userDocumentID != nil {
+            myLocationManager.stopUpdatingLocation()
+            db.collection("Bus").document(userDocumentID).delete()
+            userDocumentID = nil
+        }
+        ridingSwitch = false
     }
     
 }
