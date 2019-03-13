@@ -93,10 +93,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var ridingSwitch : Bool = false
     
+    // タイマー
+    var checkTimer: Timer!
+    
     @IBOutlet var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 30秒に一回FirebaseのDatabaseをチェックする
+        checkTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.checkFireBase), userInfo: nil, repeats: true)
         
         db = Firestore.firestore()
         
@@ -212,26 +218,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 selectedBus = busRoute[pickerView.selectedRow(inComponent: 0)]
                 ridingSwitch = true
             }else{
-                // 現在の許可の状態で場合分け
-                switch CLLocationManager.authorizationStatus() {
-                    // 未設定の場合
-                    case CLAuthorizationStatus.notDetermined:
-                        myLocationManager.requestWhenInUseAuthorization()
-
-                    //機能制限されている場合
-                    case CLAuthorizationStatus.restricted:
-                        alertMessage(message: "位置情報サービスの利用が制限されているため利用できません。")
-                        myLocationManager.requestAlwaysAuthorization()
-
-                    //「許可しない」に設定されている場合
-                    case CLAuthorizationStatus.denied:
-                        alertMessage(message: "位置情報の利用が許可されていないため利用できません。")
-                        myLocationManager.requestAlwaysAuthorization()
-
-                    // 「常に許可」か「使用中のみ許可」の場合
-                    default:
-                        break
-                }
+                myLocationManager.requestAlwaysAuthorization()
             }
         }
     }
@@ -254,8 +241,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             distance = newLocation.distance(from: formerLocation)
 //            print("distance:\(String(distance))")
             
-            // 前の書き込み位置から20m進んだらFirebaseに最新の位置を書き込み
-            if distance > 0 {
+            // 前の書き込み位置から10m進む、もしくは前回の更新から30秒たったらFirebaseに最新の位置を書き込み
+            if distance > 10 {
                 
                 // Firebase
                 let data = [
@@ -350,6 +337,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     self.myMapView.addAnnotations(self.busAnnotation)
                 }
                 
+            }
+        }
+    }
+    
+    @objc func checkFireBase() {
+        self.db.collection("Bus").getDocuments () { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                let now = NSDate()
+//                print(now)
+                for document in querySnapshot!.documents {
+                    let docID = document.documentID
+                    let documentTimestamp = document.data()["createdAt"] as! Timestamp
+//                    print(documentTimestamp.dateValue())
+                    let span = now.timeIntervalSince(documentTimestamp.dateValue() as Date)
+//                    print(span)
+                    if span > 60 {
+                        self.db.collection("Bus").document(docID).delete()
+                    }
+                }
             }
         }
     }
