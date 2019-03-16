@@ -118,7 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         pickerView.dataSource = self
         
         // 地図の表示範囲を設定
-        let initialCoordinate = CLLocationCoordinate2DMake(36.098, 140.1033)
+        let initialCoordinate = CLLocationCoordinate2DMake(36.097, 140.1033)
         let span = MKCoordinateSpan.init(latitudeDelta: 0.045, longitudeDelta: 0.034)
         let region = MKCoordinateRegion(center: initialCoordinate, span: span)
         
@@ -184,24 +184,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // 10秒に一回FirebaseのDatabaseをチェックする
         checkTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.checkFireBase), userInfo: nil, repeats: true)
         
-        // アプリの終了を観察
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillTerminate(_:)), name: UIApplication.willTerminateNotification, object: nil)
-        
-        // WiFi情報を確認
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        //WiFiがoffになった時
+        reachability.whenUnreachable = { reachability in
+            print(reachability.connection)
+            self.button.setBackgroundImage(UIImage(named: "ride.png"), for: .normal)
+            //位置情報の更新やめる
+            if self.userDocumentID != nil {
+                self.myLocationManager.stopUpdatingLocation()
+                self.db.collection("BusData").document(self.userDocumentID).delete()
+                self.userDocumentID = nil
+            }
+            self.ridingSwitch = false
+        }
         try? reachability.startNotifier()
         
+        // whiteViewの角を丸くする
         whiteView.layer.cornerRadius = 20
         
     }
-    
-//    // アプリが終了した時
-//    func applicationWillTerminate(_ application: UIApplication) {
-//        //位置情報の更新やめる
-//        if userDocumentID != nil {
-//            db.collection("BusData").document(userDocumentID).delete()
-//        }
-//    }
     
     //メッセージ出力メソッド
     func alertMessage(message:String) {
@@ -392,17 +392,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 }
             }
         }
-    }
-    
-    @objc func reachabilityChanged() {
-        button.setBackgroundImage(UIImage(named: "ride.png"), for: .normal)
-        //位置情報の更新やめる
-        if userDocumentID != nil {
-            myLocationManager.stopUpdatingLocation()
-            db.collection("BusData").document(userDocumentID).delete()
-            userDocumentID = nil
-        }
-        ridingSwitch = false
     }
     
 }
