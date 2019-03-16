@@ -20,6 +20,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // 地図
     @IBOutlet var myMapView: MKMapView!
     
+    @IBOutlet var whiteView: UIView!
+    
     // 位置情報
     var myLocationManager: CLLocationManager!
     
@@ -116,7 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         pickerView.dataSource = self
         
         // 地図の表示範囲を設定
-        let initialCoordinate = CLLocationCoordinate2DMake(36.102, 140.1033)
+        let initialCoordinate = CLLocationCoordinate2DMake(36.098, 140.1033)
         let span = MKCoordinateSpan.init(latitudeDelta: 0.045, longitudeDelta: 0.034)
         let region = MKCoordinateRegion(center: initialCoordinate, span: span)
         
@@ -188,6 +190,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // WiFi情報を確認
         NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: .reachabilityChanged, object: reachability)
         try? reachability.startNotifier()
+        
+        whiteView.layer.cornerRadius = 20
         
     }
     
