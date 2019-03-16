@@ -277,7 +277,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     }
                     userDocumentID = self.ref!.documentID
                 }else{
-                    db.collection("BusData").document(userDocumentID).updateData(data)
+                    var existDocumentID = false
+                    self.db.collection("BusData").getDocuments () { (querySnapshot, err) in
+                        for document in querySnapshot!.documents {
+                            if document.documentID == self.userDocumentID {
+                                existDocumentID = true
+                            }
+                        }
+                    }
+                    
+                    if existDocumentID {
+                        db.collection("BusData").document(userDocumentID).updateData(data)
+                    }else{
+                        db.collection("BusData").document(userDocumentID).setData(data)
+                    }
                 }
                 
                 // 最新の位置情報を一個前にずらす
