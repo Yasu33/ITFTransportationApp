@@ -93,29 +93,36 @@
             <objects>
                 <viewController id="0cU-me-e7P" customClass="UsageViewController" customModule="ITFTransportationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="K8b-9Z-PcU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1288"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sry-6L-Tb9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1288"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xb-mD-SGd">
-                                        <rect key="frame" x="166.5" y="829" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6Q-DP-IvT">
+                                        <rect key="frame" x="28" y="120" width="318" height="183.5"/>
+                                        <string key="text">＊本アプリは通信環境が必要となります。  ＊位置情報の取得を許可しない場合、一部の機能が使えなくなります。  ＊このアプリの使用時には、アプリがバックグラウンド状態でも位置情報が取得されます。バッテリーの消費電力を抑えるために、使用後は速やかにアプリを終了することをおすすめします。</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usageImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="aed-aK-3gH">
+                                        <rect key="frame" x="45.5" y="322" width="284" height="363"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="284" id="1L7-cy-gkB"/>
+                                            <constraint firstAttribute="height" constant="363" id="Ft3-4l-hOI"/>
+                                        </constraints>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNd-cv-a0x">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="94"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アプリの使い方" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwC-Hc-gb6">
-                                                <rect key="frame" x="109" y="47" width="157" height="27"/>
+                                                <rect key="frame" x="108.5" y="47" width="157" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                                 <color key="textColor" red="0.4611764706" green="0.3294117647" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTP-Sr-LeO">
-                                                <rect key="frame" x="330" y="45" width="30" height="30"/>
+                                                <rect key="frame" x="329" y="45" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="Jmn-Sj-QWe"/>
                                                     <constraint firstAttribute="height" constant="30" id="WxP-LK-3Eb"/>
@@ -135,15 +142,27 @@
                                             <constraint firstAttribute="trailing" secondItem="rTP-Sr-LeO" secondAttribute="trailing" constant="15" id="yvy-lF-N5i"/>
                                         </constraints>
                                     </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAF-Ol-UuD">
+                                        <rect key="frame" x="28" y="718" width="318" height="551"/>
+                                        <mutableString key="text">1. バス停 バス停のマークを押すと、バス停の名前を見ることができます。 バス停は、大学循環の停留所に限ります。  2. バス 走行中のバスの位置に表示されます。 バスの位置はアプリのユーザーが送信する情報に委ねられています。必ずしも正しい位置であるとは限りませんので、ご注意ください。 下記に示すように、バスの種類によってマークが変わります。 ・右→大学循環右回り ・左→大学循環左回り ・中央→大学中央行 ・土→土浦駅西口行 ・う→ひたち野うしく駅行 ・荒→荒川沖駅西口行  3. バスの行き先 バスの位置情報を共有する時、乗車/降車ボタンを押す前に、乗っているバスを選択します。  4. 乗車/降車ボタン バスの位置情報を共有し始める時と終了する時に押します。乗車ボタンを押してから降車ボタンを押すまでの間、位置情報が他のユーザーに共有されます。 位置情報共有中は、このアプリをバックグラウンド状態にして他のアプリを使うことができますが、アプリを終了すると位置情報の共有は終了します。</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="900" id="ChM-Tx-HnH"/>
-                                    <constraint firstItem="1xb-mD-SGd" firstAttribute="centerX" secondItem="Sry-6L-Tb9" secondAttribute="centerX" id="PLx-I7-j1u"/>
-                                    <constraint firstAttribute="trailing" secondItem="aNd-cv-a0x" secondAttribute="trailing" id="R8k-n3-OEE"/>
-                                    <constraint firstItem="aNd-cv-a0x" firstAttribute="leading" secondItem="Sry-6L-Tb9" secondAttribute="leading" id="bgd-Wl-hph"/>
-                                    <constraint firstAttribute="bottom" secondItem="1xb-mD-SGd" secondAttribute="bottom" constant="50" id="kbD-hA-VEY"/>
-                                    <constraint firstItem="aNd-cv-a0x" firstAttribute="top" secondItem="Sry-6L-Tb9" secondAttribute="top" id="laJ-I4-1Ph"/>
+                                    <constraint firstItem="g6Q-DP-IvT" firstAttribute="leading" secondItem="Sry-6L-Tb9" secondAttribute="leading" constant="28" id="1ao-gi-bOg"/>
+                                    <constraint firstItem="aed-aK-3gH" firstAttribute="centerX" secondItem="Sry-6L-Tb9" secondAttribute="centerX" id="21a-aQ-tbY"/>
+                                    <constraint firstItem="g6Q-DP-IvT" firstAttribute="top" secondItem="Sry-6L-Tb9" secondAttribute="top" constant="120" id="2b2-i2-uN8"/>
+                                    <constraint firstItem="aNd-cv-a0x" firstAttribute="leading" secondItem="Sry-6L-Tb9" secondAttribute="leading" id="H0S-yA-hAN"/>
+                                    <constraint firstItem="mAF-Ol-UuD" firstAttribute="leading" secondItem="Sry-6L-Tb9" secondAttribute="leading" constant="28" id="HPw-Eh-QdA"/>
+                                    <constraint firstAttribute="trailing" secondItem="mAF-Ol-UuD" secondAttribute="trailing" constant="29" id="Rcc-gU-6Ap"/>
+                                    <constraint firstItem="aNd-cv-a0x" firstAttribute="centerX" secondItem="g6Q-DP-IvT" secondAttribute="centerX" id="Uiz-21-g7F"/>
+                                    <constraint firstItem="aed-aK-3gH" firstAttribute="top" secondItem="g6Q-DP-IvT" secondAttribute="bottom" constant="18.5" id="Z8R-0U-Cc4"/>
+                                    <constraint firstAttribute="trailing" secondItem="g6Q-DP-IvT" secondAttribute="trailing" constant="29" id="eeN-3P-HEH"/>
+                                    <constraint firstAttribute="height" constant="1288" id="rgv-bc-ZjV"/>
+                                    <constraint firstItem="mAF-Ol-UuD" firstAttribute="top" secondItem="aed-aK-3gH" secondAttribute="bottom" constant="33" id="sUh-Qi-MUb"/>
+                                    <constraint firstItem="aNd-cv-a0x" firstAttribute="top" secondItem="Sry-6L-Tb9" secondAttribute="top" id="td3-3B-HKB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -158,7 +177,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ciN-V3-7pP"/>
                     </scrollView>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="375" height="1288"/>
                     <connections>
                         <outlet property="header" destination="aNd-cv-a0x" id="BCc-jB-pan"/>
                         <outlet property="scrollView" destination="K8b-9Z-PcU" id="Bbc-mQ-Qob"/>
@@ -173,5 +192,6 @@
         <image name="Xbutton.png" width="124" height="124"/>
         <image name="question.png" width="121" height="121"/>
         <image name="ride.png" width="124" height="124"/>
+        <image name="usageImage.png" width="660" height="842"/>
     </resources>
 </document>

@@ -32,6 +32,7 @@
 		E1F4BE8A223DFB3B0012E06A /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE89223DFB3B0012E06A /* question.png */; };
 		E1F4BE8E223E133B0012E06A /* UsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4BE8D223E133B0012E06A /* UsageViewController.swift */; };
 		E1F4BE90223E1CA70012E06A /* Xbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE8F223E1CA60012E06A /* Xbutton.png */; };
+		E1F4BE92223E4FCC0012E06A /* usageImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE91223E4FCC0012E06A /* usageImage.png */; };
 		F0C85E51EF3940AD50152471 /* Pods_ITFTransportationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C30C2957879EBF2B36C3BF8 /* Pods_ITFTransportationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		E1F4BE89223DFB3B0012E06A /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
 		E1F4BE8D223E133B0012E06A /* UsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageViewController.swift; sourceTree = "<group>"; };
 		E1F4BE8F223E1CA60012E06A /* Xbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Xbutton.png; sourceTree = "<group>"; };
+		E1F4BE91223E4FCC0012E06A /* usageImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usageImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		E13A09D82236DFFD00E12ECA /* image */ = {
 			isa = PBXGroup;
 			children = (
+				E1F4BE91223E4FCC0012E06A /* usageImage.png */,
 				E1F4BE8F223E1CA60012E06A /* Xbutton.png */,
 				E1F4BE89223DFB3B0012E06A /* question.png */,
 				E13A09D92236DFFD00E12ECA /* 大学循環左回り.png */,
@@ -351,6 +354,7 @@
 				E13A09EE2236DFFD00E12ECA /* 大学循環右回り.png in Resources */,
 				E13A09E92236DFFD00E12ECA /* BusStop16px.png in Resources */,
 				E13A09EB2236DFFD00E12ECA /* ride.png in Resources */,
+				E1F4BE92223E4FCC0012E06A /* usageImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
